@@ -14,7 +14,7 @@ namespace Assimetric_RPC
 
         public Disco(int p, int q)
         {
-            List<int> s = new();
+            Schedule = new();
 
             int activeSlots = 0;
 
@@ -22,16 +22,15 @@ namespace Assimetric_RPC
             {
                 if (i % p == 0 || i% q == 0)
                 {
-                    s.Add(1);
+                    Schedule.Add(1);
                     activeSlots++;
                 }
                 else
                 {
-                    s.Add(0);
+                    Schedule.Add(0);
                 }
             }
 
-            Schedule = s;
             DutyCyclePerc = 100 * (double)activeSlots / (p * q);
         }
     }
