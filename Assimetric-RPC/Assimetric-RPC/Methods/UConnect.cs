@@ -18,7 +18,7 @@
 
         public UConnect(int p)
         {
-            Name = nameof(UConnect);
+            Name = $"{nameof(UConnect)}({p})";
             Schedule = new List<bool>();
             ScheduleSize = p * p;
 

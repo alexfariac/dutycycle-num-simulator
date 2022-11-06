@@ -14,7 +14,7 @@
 
         public Disco(int p, int q)
         {
-            Name = nameof(Disco);
+            Name = $"{nameof(Disco)}({p}, {q})";
             Schedule = new ();
             ScheduleSize = p * q;
 
