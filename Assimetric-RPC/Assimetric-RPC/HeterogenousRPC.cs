@@ -1,6 +1,5 @@
 ﻿using Assimetric_RPC.Methods;
 using Assimetric_RPC.Utils;
-using System.Numerics;
 
 namespace Assimetric_RPC
 {
@@ -16,11 +15,11 @@ namespace Assimetric_RPC
 
             for (int relativeOffset = 0; relativeOffset < lcm; relativeOffset++)
             {
-                int discoveryTime = DiscoveryTime(schedule1, schedule2, relativeOffset);
+                int discoveryTime = DiscoveryTime(schedule1, schedule2, relativeOffset, lcm);
                 if(discoveryTime == -1)
                 {
                     Console.WriteLine($"S1: {schedule1.Name}, S2: {schedule2.Name} DC1: {schedule1.DutyCyclePerc}, DC2: {schedule2.DutyCyclePerc}, MIN-NDT: inf, AVG-NDT: inf, MAX-NDT: inf");
-                    break;
+                    return;
                 }
 
                 discoveryTimeSum += discoveryTime;
@@ -32,9 +31,10 @@ namespace Assimetric_RPC
             Console.WriteLine($"S1: {schedule1.Name}, S2: {schedule2.Name} DC1: {schedule1.DutyCyclePerc}, DC2: {schedule2.DutyCyclePerc}, MIN-NDT: {minDiscoveryTime}, AVG-NDT: {averageNdt}, MAX-NDT: {maxDiscoveryTime}");
         }
 
-        public static int DiscoveryTime(ScheduleMethod schedule1, ScheduleMethod schedule2, int relativeOffset = 0)
+        public static int DiscoveryTime(ScheduleMethod schedule1, ScheduleMethod schedule2, int relativeOffset = 0, int lcm = -1)
         {
-            for(int i = 0; i < MathUtils.Lcm(schedule1.ScheduleSize, schedule2.ScheduleSize); i++)
+            int schedule_lcm = lcm == -1 ? MathUtils.Lcm(schedule1.ScheduleSize, schedule2.ScheduleSize) : lcm;
+            for (int i = 0; i < schedule_lcm; i++)
             {
                 int index1 = i % schedule1.ScheduleSize;
                 int index2 = (i + relativeOffset) % schedule2.ScheduleSize;

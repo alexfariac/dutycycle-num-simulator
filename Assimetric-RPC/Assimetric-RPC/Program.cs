@@ -19,12 +19,14 @@ for (int i = 0; i < primesList.Count; i++)
     {
         for (int k = j; k < primesList.Count; k++)
         {
+            if (j == k) continue;
             ScheduleMethod s2 = new Disco(primesList[j], primesList[k]);
 
             HeterogenousRPC.NDTMetrics(s1, s2);
         }
     }
 }
+
 
 Console.WriteLine($"Simulation executed in {sw.Elapsed.TotalSeconds} seconds.");
 
