@@ -11,5 +11,7 @@
         public abstract int ScheduleSize { get; }
 
         public abstract int ActiveSlotsCount { get; }
+
+        public abstract List<int> ActiveSlots { get; }
     }
 }

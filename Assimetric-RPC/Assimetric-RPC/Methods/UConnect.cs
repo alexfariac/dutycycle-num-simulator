@@ -16,10 +16,13 @@
 
         public override int ActiveSlotsCount { get; }
 
+        public override List<int> ActiveSlots { get; }
+
         public UConnect(int p)
         {
             Name = $"{nameof(UConnect)}({p})";
-            Schedule = new List<bool>();
+            Schedule = new ();
+            ActiveSlots = new ();
             ScheduleSize = p * p;
 
             for (int i = 0; i < ScheduleSize; i++)
@@ -28,6 +31,7 @@
                 if (i % p == 0 || 0 <= v && v < (p + 1) / 2.0)
                 {
                     Schedule.Add(true);
+                    ActiveSlots.Add(i);
                     ActiveSlotsCount++;
                 }
                 else

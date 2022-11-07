@@ -12,10 +12,13 @@
 
         public override int ActiveSlotsCount { get; }
 
+        public override List<int> ActiveSlots { get; }
+
         public Torus(int n, int m)
         {
             Name = nameof(Torus);
             Schedule = new List<bool>();
+            ActiveSlots = new();
             ScheduleSize = n * m;
 
             int activeSlots = 0;
@@ -25,6 +28,7 @@
                 {
                     bool r = j == 0 || i == j && i < m / 2 + 1;
                     Schedule.Add(r);
+                    ActiveSlots.Add(i);
                     ActiveSlotsCount++;
                 }
             }

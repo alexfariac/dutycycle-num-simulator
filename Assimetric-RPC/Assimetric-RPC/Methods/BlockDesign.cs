@@ -18,6 +18,8 @@ namespace Assimetric_RPC.Methods
 
         public override int ActiveSlotsCount { get; }
 
+        public override List<int> ActiveSlots { get; }
+
         private readonly Dictionary<int, List<int>> BDsActiveSlots = new()
         {
             { 7, new List<int>() { 0, 1, 3 } },
@@ -28,15 +30,14 @@ namespace Assimetric_RPC.Methods
         // TODO: Generate active slots on run-time considering the Multiplier diffence set theorem.
         public BlockDesign(int v)
         {
-            List<int> activeSlots = BDsActiveSlots[v];
-
+            ActiveSlots = BDsActiveSlots[v];
             Name = nameof(BlockDesign);
-            ActiveSlotsCount = activeSlots.Count;
+            ActiveSlotsCount = ActiveSlots.Count;
             ScheduleSize = v;
             Schedule = new ();
 
             int nextActiveSlotIndex = 0;
-            int nextActiveSlotNumber = activeSlots[nextActiveSlotIndex];
+            int nextActiveSlotNumber = ActiveSlots[nextActiveSlotIndex];
 
             for (int i = 0; i < v; i++)
             {
@@ -47,7 +48,7 @@ namespace Assimetric_RPC.Methods
                     nextActiveSlotIndex++;
                     if (nextActiveSlotIndex < ActiveSlotsCount)
                     {
-                        nextActiveSlotNumber = activeSlots[nextActiveSlotIndex];
+                        nextActiveSlotNumber = ActiveSlots[nextActiveSlotIndex];
                     }
 
                 }

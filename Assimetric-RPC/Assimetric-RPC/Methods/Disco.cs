@@ -12,10 +12,13 @@
 
         public override int ActiveSlotsCount { get; }
 
+        public override List<int> ActiveSlots { get; }
+
         public Disco(int p, int q)
         {
             Name = $"{nameof(Disco)}({p}, {q})";
             Schedule = new ();
+            ActiveSlots = new ();
             ScheduleSize = p * q;
 
             for (int i = 0; i < ScheduleSize; i++)
@@ -23,6 +26,7 @@
                 if (i % p == 0 || i % q == 0)
                 {
                     Schedule.Add(true);
+                    ActiveSlots.Add(i);
                     ActiveSlotsCount++;
                 }
                 else

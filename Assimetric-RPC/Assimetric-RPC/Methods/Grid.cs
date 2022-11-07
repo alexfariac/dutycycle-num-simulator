@@ -12,10 +12,13 @@
 
         public override int ActiveSlotsCount { get; }
 
+        public override List<int> ActiveSlots { get; }
+
         public Grid(int n, int m)
         {
             Name = nameof(Grid);
             Schedule = new ();
+            ActiveSlots = new ();
             ScheduleSize = n * m;
 
             for (int i = 0; i < n; i++)
@@ -25,6 +28,7 @@
                     if (i == 0 || j == 0)
                     {
                         Schedule.Add(true);
+                        ActiveSlots.Add(i);
                         ActiveSlotsCount++;
                     }
                     else
