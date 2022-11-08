@@ -28,8 +28,12 @@
                 {
                     bool r = j == 0 || i == j && i < m / 2 + 1;
                     Schedule.Add(r);
-                    ActiveSlots.Add(i);
-                    ActiveSlotsCount++;
+                    if (r)
+                    {
+                        ActiveSlots.Add(i*n+j);
+                        ActiveSlotsCount++;
+                    }
+                    
                 }
             }
 

@@ -16,7 +16,7 @@
 
         public Grid(int n, int m)
         {
-            Name = nameof(Grid);
+            Name = $"{nameof(Grid)}({n},{m})";
             Schedule = new ();
             ActiveSlots = new ();
             ScheduleSize = n * m;
