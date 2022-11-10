@@ -4,14 +4,13 @@ using System.Diagnostics;
 
 Stopwatch sw = Stopwatch.StartNew();
 
-List<ScheduleMethod> scheduleMethods = getMethodList(50);
+List<ScheduleMethod> scheduleMethods = getMethodList(10);
 Console.WriteLine(Methods_DC(scheduleMethods));
 
 for (int i = 0; i < scheduleMethods.Count; i++)
 {
     for (int j = i; j < scheduleMethods.Count; j++)
     {
-        if (i == j) continue;
         HeterogenousRPC.NDTMetrics(scheduleMethods[i], scheduleMethods[j]);
     }
 }
