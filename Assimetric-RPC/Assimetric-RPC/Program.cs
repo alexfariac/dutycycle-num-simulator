@@ -2,9 +2,10 @@
 using Assimetric_RPC.Methods;
 using System.Diagnostics;
 
+
 Stopwatch sw = Stopwatch.StartNew();
 
-List<ScheduleMethod> scheduleMethods = getMethodList(10);
+List<ScheduleMethod> scheduleMethods = getMethodList(int.Parse(args[1]));
 Console.WriteLine(Methods_DC(scheduleMethods));
 
 for (int i = 0; i < scheduleMethods.Count; i++)
