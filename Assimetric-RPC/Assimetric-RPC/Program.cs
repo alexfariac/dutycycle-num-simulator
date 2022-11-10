@@ -1,73 +1,65 @@
 ﻿using Assimetric_RPC;
 using Assimetric_RPC.Methods;
-using Assimetric_RPC.Utils;
 using System.Diagnostics;
-using System.Text;
 
 Stopwatch sw = Stopwatch.StartNew();
 
-List<int> primesList = MathUtils.getPrimes(15);
-Console.WriteLine($"Primes generated in {sw.ElapsedMilliseconds} ms.");
+List<ScheduleMethod> scheduleMethods = getMethodList(50);
+Console.WriteLine(Methods_DC(scheduleMethods));
 
-/*
-for (int i = 0; i < primesList.Count; i++)
+for (int i = 0; i < scheduleMethods.Count; i++)
 {
-    ScheduleMethod s1 = new UConnect(primesList[i]);
-    for (int j = 0; j < primesList.Count; j++)
+    for (int j = i; j < scheduleMethods.Count; j++)
     {
-        for (int k = j; k < primesList.Count; k++)
-        {
-            if (j == k) continue;
-            ScheduleMethod s2 = new Disco(primesList[j], primesList[k]);
-
-            HeterogenousRPC.NDTMetrics(s1, s2);
-        }
+        if (i == j) continue;
+        HeterogenousRPC.NDTMetrics(scheduleMethods[i], scheduleMethods[j]);
     }
 }
-*/
-
-/*
-int scheduleLimit = 50;
-for(int i = 0; i < primesList.Count; i++)
-{
-    for(int j = i; j < primesList.Count; j++)
-    {
-        if (j == i) continue;
-        ScheduleMethod s1 = new Disco(primesList[i], primesList[j]);
-
-        for(int k = 2; k <= scheduleLimit; k++)
-        {
-            ScheduleMethod s2 = new Grid(k, k);
-
-            HeterogenousRPC.NDTMetrics(s1, s2);
-        }
-    }
-}
-*/
-
-for(int i = 0; i < primesList.Count; i++)
-{
-    ScheduleMethod s1 = new UConnect(primesList[i]);
-
-    for(int j = 4; j <= 20; j++)
-    {
-        ScheduleMethod s2 = new Searchlight(j);
-
-        HeterogenousRPC.NDTMetrics(s1, s2);
-    }
-}
-
 
 Console.WriteLine($"Simulation executed in {sw.Elapsed.TotalSeconds} seconds.");
 
 
-static void print(List<bool> bd, int offset = 0)
+string Methods_DC(List<ScheduleMethod> methods)
 {
-    StringBuilder sb = new();
-    for (int i = 0; i < bd.Count; i++)
+    return String.Join(" | ", methods);
+}
+
+List<ScheduleMethod> getMethodList(int dcPerc)
+{
+    switch (dcPerc)
     {
-        int index = (offset + i < bd.Count) ? offset + i : (offset + i) % bd.Count;
-        sb.Append(bd[index] ? 1 : 0);
+        case 50:
+            ScheduleMethod dc50_s1 = new Searchlight(5);
+            ScheduleMethod dc50_s2 = new Disco(5, 7);
+            ScheduleMethod dc50_s3 = new Grid(3, 3);
+            ScheduleMethod dc50_s4 = new Torus(3, 3);
+            ScheduleMethod dc50_s5 = new UConnect(3);
+
+            return new() { dc50_s1, dc50_s2, dc50_s3, dc50_s4, dc50_s5 };
+        break;
+
+        case 10:
+            ScheduleMethod dc10_s1 = new Searchlight(20);
+            ScheduleMethod dc10_s2 = new Disco(17, 19);
+            ScheduleMethod dc10_s3 = new Grid(19, 19);
+            ScheduleMethod dc10_s4 = new Torus(14, 14);
+            ScheduleMethod dc10_s5 = new UConnect(13);
+
+            return new() { dc10_s1, dc10_s2, dc10_s3, dc10_s4, dc10_s5 };
+        break;
+
+        case 5:
+            ScheduleMethod dc5_s1 = new Searchlight(40);
+            ScheduleMethod dc5_s2 = new Disco(37, 41);
+            ScheduleMethod dc5_s3 = new Grid(39, 39);
+            ScheduleMethod dc5_s4 = new Torus(30, 30);
+            ScheduleMethod dc5_s5 = new UConnect(29);
+
+            return new() { dc5_s1, dc5_s2, dc5_s3, dc5_s4, dc5_s5 };
+        break;
+
+        default: 
+            throw new NotImplementedException("Invalid DC percentage");
+        break;
     }
-    Console.WriteLine(sb.ToString());
 }
