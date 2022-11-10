@@ -13,5 +13,10 @@
         public abstract int ActiveSlotsCount { get; }
 
         public abstract List<int> ActiveSlots { get; }
+
+        public override string ToString()
+        {
+            return $"{Name}: {DutyCyclePerc}";
+        }
     }
 }

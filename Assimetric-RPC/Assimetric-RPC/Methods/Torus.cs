@@ -16,12 +16,11 @@
 
         public Torus(int n, int m)
         {
-            Name = nameof(Torus);
+            Name = $"{nameof(Torus)}({n},{m})";
             Schedule = new List<bool>();
             ActiveSlots = new();
             ScheduleSize = n * m;
 
-            int activeSlots = 0;
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
@@ -37,7 +36,6 @@
                 }
             }
 
-            ActiveSlotsCount = activeSlots;
             DutyCyclePerc = 100.0 * ActiveSlotsCount / ScheduleSize;
         }
     }

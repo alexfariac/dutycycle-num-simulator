@@ -33,7 +33,7 @@
                 }
             }
 
-            DutyCyclePerc = t * t / 2.0;
+            DutyCyclePerc = 100.0 * ActiveSlotsCount / ScheduleSize;
         }
     }
 }
