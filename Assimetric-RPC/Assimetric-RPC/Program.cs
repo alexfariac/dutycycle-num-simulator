@@ -58,6 +58,26 @@ List<ScheduleMethod> getMethodList(int dcPerc)
             return new() { dc5_s1, dc5_s2, dc5_s3, dc5_s4, dc5_s5 };
         break;
 
+        case 2:
+            ScheduleMethod dc2_s1 = new Searchlight(100);
+            ScheduleMethod dc2_s2 = new Disco(97, 101);
+            ScheduleMethod dc2_s3 = new Grid(99, 99);
+            ScheduleMethod dc2_s4 = new Torus(75, 75);
+            ScheduleMethod dc2_s5 = new UConnect(73);
+
+            return new() { dc2_s1, dc2_s2, dc2_s3, dc2_s4, dc2_s5 };
+        break;
+
+        case 1:
+            ScheduleMethod dc1_s1 = new Searchlight(200);
+            ScheduleMethod dc1_s2 = new Disco(197, 199);
+            ScheduleMethod dc1_s3 = new Grid(199, 199);
+            ScheduleMethod dc1_s4 = new Torus(150, 150);
+            ScheduleMethod dc1_s5 = new UConnect(149);
+
+            return new() { dc1_s1, dc1_s2, dc1_s3, dc1_s4, dc1_s5 };
+        break;
+
         default: 
             throw new NotImplementedException("Invalid DC percentage");
         break;
