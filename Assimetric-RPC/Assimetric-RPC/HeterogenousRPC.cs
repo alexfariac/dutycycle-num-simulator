@@ -1,5 +1,7 @@
 ﻿using Assimetric_RPC.Methods;
 using Assimetric_RPC.Utils;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace Assimetric_RPC
 {
@@ -41,6 +43,23 @@ namespace Assimetric_RPC
             // Console.WriteLine($"DISCOVERY SUM: {discoveryTimeSum}, ITERATIONS: {iterations}");
             double averageNdt = discoveryTimeAverage / iterations;
             Console.WriteLine($"S1: {schedule1.Name}; S2: {schedule2.Name}; lcm: {lcm}; gcf: {gcf}; DC1: {Math.Round(schedule1.DutyCyclePerc, ROUND_PRECISION)}; DC2: {Math.Round(schedule2.DutyCyclePerc, ROUND_PRECISION)}; AVG-NDT: {averageNdt}; MAX-NDT: {maxDiscoveryTime}; ITERATIONS: {iterations}");
+        }
+
+        public static int DiscoveryTimeActiveSlots(ScheduleMethod schedule1, ScheduleMethod schedule2, int startIndex1 = 0, int startIndex2 = 0)
+        {
+            int closestActiveSlotIndex1 = schedule1.FindNextGreatestActiveSlot(startIndex1);
+            int closestActiveSlotIndex2 = schedule2.FindNextGreatestActiveSlot(startIndex2);
+
+            int slotsUntilNextActiveSlots1 = (closestActiveSlotIndex1 - startIndex1) >= 0 ? (closestActiveSlotIndex1 - startIndex1) : schedule1.ScheduleSize - startIndex1;
+            int slotsUntilNextActiveSlots2 = (closestActiveSlotIndex2 - startIndex2) >= 0 ? (closestActiveSlotIndex2 - startIndex2) : schedule2.ScheduleSize - startIndex2;
+
+            if(slotsUntilNextActiveSlots1 == slotsUntilNextActiveSlots2)
+            {
+                return slotsUntilNextActiveSlots1;
+            }
+
+
+            return int.MaxValue;
         }
 
         public static int DiscoveryTime(ScheduleMethod schedule1, ScheduleMethod schedule2, int startIndex1 = 0, int startIndex2 = 0, int lcm = -1)
