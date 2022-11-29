@@ -50,14 +50,13 @@ namespace Assimetric_RPC
             int closestActiveSlotIndex1 = schedule1.FindNextGreatestActiveSlot(startIndex1);
             int closestActiveSlotIndex2 = schedule2.FindNextGreatestActiveSlot(startIndex2);
 
-            int slotsUntilNextActiveSlots1 = (closestActiveSlotIndex1 - startIndex1) >= 0 ? (closestActiveSlotIndex1 - startIndex1) : schedule1.ScheduleSize - startIndex1;
-            int slotsUntilNextActiveSlots2 = (closestActiveSlotIndex2 - startIndex2) >= 0 ? (closestActiveSlotIndex2 - startIndex2) : schedule2.ScheduleSize - startIndex2;
+            int slotsUntilNextActiveSlots1 = (closestActiveSlotIndex1 - startIndex1) >= 0 ? (closestActiveSlotIndex1 - startIndex1) : schedule1.ScheduleSize - startIndex1 + closestActiveSlotIndex1;
+            int slotsUntilNextActiveSlots2 = (closestActiveSlotIndex2 - startIndex2) >= 0 ? (closestActiveSlotIndex2 - startIndex2) : schedule2.ScheduleSize - startIndex2 + closestActiveSlotIndex2;
 
-            if(slotsUntilNextActiveSlots1 == slotsUntilNextActiveSlots2)
+            if (slotsUntilNextActiveSlots1 == slotsUntilNextActiveSlots2)
             {
                 return slotsUntilNextActiveSlots1;
             }
-
 
             return int.MaxValue;
         }
