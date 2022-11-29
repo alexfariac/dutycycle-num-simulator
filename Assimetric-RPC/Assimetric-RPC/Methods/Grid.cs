@@ -28,7 +28,7 @@
                     if (i == 0 || j == 0)
                     {
                         Schedule.Add(true);
-                        ActiveSlots.Add(i);
+                        ActiveSlots.Add(i * n + j);
                         ActiveSlotsCount++;
                     }
                     else

@@ -18,5 +18,10 @@
         {
             return $"{Name}: {DutyCyclePerc}";
         }
+
+        public int FindNextGreatestActiveSlot(int slotIndex)
+        {
+            return ActiveSlots.Where(item => item >= slotIndex).FirstOrDefault(ActiveSlots.First());
+        }
     }
 }
