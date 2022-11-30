@@ -1,0 +1,28 @@
+Searchlight(20): 10 | Disco(17, 19): 10.8359133126935 | Grid(19,19): 10.249307479224377 | Torus(14,14): 10.714285714285714 | UConnect(13): 11.242603550295858
+S1: Searchlight(20); S2: Searchlight(20); lcm: 200; gcf: 200; DC1: 10; DC2: 10; AVG-NDT: 87; MAX-NDT: 199; ITERATIONS: 20100
+S1: Searchlight(20); S2: Disco(17, 19); lcm: 64600; gcf: 1; DC1: 10; DC2: 10.836; AVG-NDT: 71; MAX-NDT: 339; ITERATIONS: 2086612300
+S1: Searchlight(20); S2: Grid(19,19); lcm: 72200; gcf: 1; DC1: 10; DC2: 10.249; AVG-NDT: 95; MAX-NDT: 367; ITERATIONS: 2606456100
+S1: Searchlight(20); S2: Torus(14,14); lcm: 9800; gcf: 4; DC1: 10; DC2: 10.714; AVG-NDT: 109; MAX-NDT: 662; ITERATIONS: 48024900
+S1: Searchlight(20); S2: UConnect(13); lcm: 33800; gcf: 1; DC1: 10; DC2: 11.243; AVG-NDT: 65; MAX-NDT: 259; ITERATIONS: 571236900
+S1: Disco(17, 19); S2: Disco(17, 19); lcm: 323; gcf: 323; DC1: 10.836; DC2: 10.836; AVG-NDT: 96; MAX-NDT: 321; ITERATIONS: 52326
+S1: Disco(17, 19); S2: Grid(19,19); lcm: 6137; gcf: 19; DC1: 10.836; DC2: 10.249; AVG-NDT: 102; MAX-NDT: 322; ITERATIONS: 18834453
+S1: Disco(17, 19); S2: Torus(14,14); lcm: 63308; gcf: 1; DC1: 10.836; DC2: 10.714; AVG-NDT: 63; MAX-NDT: 237; ITERATIONS: 2003983086
+S1: Disco(17, 19); S2: UConnect(13); lcm: 54587; gcf: 1; DC1: 10.836; DC2: 11.243; AVG-NDT: 61; MAX-NDT: 220; ITERATIONS: 1489897578
+S1: Grid(19,19); S2: Grid(19,19); lcm: 361; gcf: 361; DC1: 10.249; DC2: 10.249; AVG-NDT: 113; MAX-NDT: 359; ITERATIONS: 65341
+S1: Grid(19,19); S2: Torus(14,14); lcm: 70756; gcf: 1; DC1: 10.249; DC2: 10.714; AVG-NDT: 82; MAX-NDT: 265; ITERATIONS: 2503241146
+S1: Grid(19,19); S2: UConnect(13); lcm: 61009; gcf: 1; DC1: 10.249; DC2: 11.243; AVG-NDT: 80; MAX-NDT: 246; ITERATIONS: 1861079545
+S1: Torus(14,14); S2: Torus(14,14); lcm: 196; gcf: 196; DC1: 10.714; DC2: 10.714; AVG-NDT: 85; MAX-NDT: 195; ITERATIONS: 19306
+S1: Torus(14,14); S2: UConnect(13); lcm: 33124; gcf: 1; DC1: 10.714; DC2: 11.243; AVG-NDT: 59; MAX-NDT: 181; ITERATIONS: 548616250
+S1: UConnect(13); S2: UConnect(13); lcm: 169; gcf: 169; DC1: 11.243; DC2: 11.243; AVG-NDT: 77; MAX-NDT: 168; ITERATIONS: 14365
+Simulation executed in 25223.7506219 seconds.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Searchlight(20): 10 | Disco(17, 19): 10,8359133126935 | Grid(19,19): 10,249307479224377 | Torus(15,15): 9,777777777777779 | UConnect(13): 11,242603550295858 | BlockDesign: 10,989010989010989
+S1: BlockDesign; S2: Searchlight(20); lcm: 18200; gcf: 1; DC1: 10,989; DC2: 10; AVG-NDT: 76; MAX-NDT: 359; ITERATIONS: 165629100
+S1: BlockDesign; S2: Disco(17, 19); lcm: 29393; gcf: 1; DC1: 10,989; DC2: 10,836; AVG-NDT: 74; MAX-NDT: 456; ITERATIONS: 431988921
+S1: BlockDesign; S2: Grid(19,19); lcm: 32851; gcf: 1; DC1: 10,989; DC2: 10,249; AVG-NDT: 94; MAX-NDT: 493; ITERATIONS: 539610526
+S1: BlockDesign; S2: Torus(15,15); lcm: 20475; gcf: 1; DC1: 10,989; DC2: 9,778; AVG-NDT: 87; MAX-NDT: 434; ITERATIONS: 209623050
+S1: BlockDesign; S2: UConnect(13); lcm: 1183; gcf: 13; DC1: 10,989; DC2: 11,243; AVG-NDT: 107; MAX-NDT: 673; ITERATIONS: 700336
+S1: BlockDesign; S2: BlockDesign; lcm: 91; gcf: 91; DC1: 10,989; DC2: 10,989; AVG-NDT: 44; MAX-NDT: 90; ITERATIONS: 4186
+Simulation executed in 1810,4833269 seconds.        
