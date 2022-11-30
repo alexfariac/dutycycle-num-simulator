@@ -14,6 +14,8 @@
 
         public override List<int> ActiveSlots { get; }
 
+        public override List<int> NextActiveSlots { get; }
+
         public Searchlight(int t)
         {
             Name = $"{nameof(Searchlight)}({t})";
@@ -31,6 +33,14 @@
                     Schedule.Add(active);
                     if(active) ActiveSlots.Add(i*t+j);
                 }
+            }
+
+            NextActiveSlots = new();
+            for (int i = 0; i < ScheduleSize; i++)
+            {
+                int nextActiveSlot = FindNextGreatestActiveSlot(i);
+                int slotsToNext = nextActiveSlot - i < 0 ? ScheduleSize + nextActiveSlot - i : nextActiveSlot - i;
+                NextActiveSlots.Add(slotsToNext);
             }
 
             DutyCyclePerc = 100.0 * ActiveSlotsCount / ScheduleSize;

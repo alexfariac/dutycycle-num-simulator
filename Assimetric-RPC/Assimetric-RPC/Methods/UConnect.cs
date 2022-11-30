@@ -18,6 +18,8 @@
 
         public override List<int> ActiveSlots { get; }
 
+        public override List<int> NextActiveSlots { get; }
+
         public UConnect(int p)
         {
             Name = $"{nameof(UConnect)}({p})";
@@ -38,6 +40,14 @@
                 {
                     Schedule.Add(false);
                 }
+            }
+
+            NextActiveSlots = new();
+            for (int i = 0; i < ScheduleSize; i++)
+            {
+                int nextActiveSlot = FindNextGreatestActiveSlot(i);
+                int slotsToNext = nextActiveSlot - i < 0 ? ScheduleSize + nextActiveSlot - i : nextActiveSlot - i;
+                NextActiveSlots.Add(slotsToNext);
             }
 
             DutyCyclePerc = 100.0 * ActiveSlotsCount / (ScheduleSize);

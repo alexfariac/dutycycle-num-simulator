@@ -14,6 +14,8 @@
 
         public abstract List<int> ActiveSlots { get; }
 
+        public abstract List<int> NextActiveSlots { get;  }
+
         public override string ToString()
         {
             return $"{Name}: {DutyCyclePerc}";
@@ -21,7 +23,7 @@
 
         public int FindNextGreatestActiveSlot(int slotIndex)
         {
-            return ActiveSlots.Where(item => item >= slotIndex).FirstOrDefault(ActiveSlots.First());
+            return ActiveSlots.Where(item => item > slotIndex).FirstOrDefault(ActiveSlots.First());
         }
     }
 }
